@@ -1,0 +1,45 @@
+<h1> Ubicación: <small>{{ubicacion?.nombre}} {{ubicacion?.area}}</small></h1>
+
+<div class="row ">
+    <div class="col text-right">
+        <button class="btn btn-danger" routerLink="/ubicaciones">
+      <i class="fa fa-arrow-left"></i>
+      Regresar 
+    </button>
+    </div>
+</div>
+
+<div class="row animated fadeIn faster">
+    <div class="col-12">
+        <form action="" (ngSubmit)="Guardar(f)" #f="ngForm">
+            <div class="form-group">
+                <label class="form-label">ID</label>
+                <input type="text" placeholder="" class="form-control" name="id" disabled [(ngModel)]="ubicacion.id">
+            </div>
+            <div class="form-group">
+                <label class="form-label">área</label>
+                <input type="number" placeholder="Área ubicación" class="form-control" name="area" required [(ngModel)]="ubicacion.area" #area="ngModel" [class.is-invalid]="area.invalid && area.touched">
+                <div id="validationServer03Feedback" class="invalid-feedback">
+                    Porfavor ingrese el área.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Supra área</label>
+                <select class="form-control" name="supra_area" required [(ngModel)]="ubicacion.supra_area" #supra_area="ngModel" [class.is-invalid]="supra_area.invalid && supra_area.touched">
+                    <option value="0">N/A</option>
+                    <option *ngFor="let item of ubicaciones; let i = index" [ngValue]="item.id">{{item.nombre}}</option>
+                </select>
+                <div id="validationServer03Feedback" class="invalid-feedback">
+                    Porfavor seleccione una opción
+                </div>
+            </div>
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25" [disabled]="f.invalid">
+                  <i class="fa fa-save"></i>
+                  Guardar
+              </button>
+            </div>
+        </form>
+    </div>
+</div>

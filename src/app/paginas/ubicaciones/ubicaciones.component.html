@@ -1,0 +1,62 @@
+<h1> Ubicaciones</h1>
+<hr>
+
+<div class="row">
+    <div class="col text-right">
+        <button class="btn btn-primary" routerLink="/ubicacion/nuevo">
+          <i class="fa fa-plus"></i> 
+          Agregar
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col table-responsive">
+        <table class="table  table-hover mt-3 animated fadeIn faster" *ngIf="!cargando && ubicaciones.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Área</th>
+                    <th scope="col">Supra área</th>
+                    <th scope="col">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ubicacion of ubicaciones; let i = index">
+                    <th scope="row">{{i+1}} </th>
+                    <td>{{ubicacion.nombre}}</td>
+                    <td>{{ubicacion.area}}</td>
+                    <td>{{ubicacion.supra_area}} </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary mr-2" [routerLink]="['/ubicacion', ubicacion.id]">
+                    <i class="fa fa-pen"></i>
+                  </button>
+                        <button class="btn btn-sm btn-danger" (click)="borrarUbicacion(ubicacion, i)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center mt-3 animated fadeIn faster" *ngIf="!cargando && ubicaciones.length === 0">
+    <h4 class="alert-heading">No se encontraron registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"> </i>
+    </p>
+</div>
+
+<div class="alert alert-info text-center mt-3 animated fadeIn faster" *ngIf="cargando">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"> </i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
