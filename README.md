@@ -10,8 +10,6 @@ Para ejecutar satisfactoriamente la aplicación por favor instale las dependenci
 
 Se utiliza el lenguaje español para codificar.
 
-Para el backend se utiliza el  REST API de Firebase ( Real time DataBase).
-
 ## Servidor de desarrollo
 
 Ejecute `ng serve` para un servidor dev. Návegue a `http://localhost:4200/`. 
